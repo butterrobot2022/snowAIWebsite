@@ -18,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Get the CSRF token value from the HTML form
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        console.log(csrfToken);
         // Make an AJAX request to the Django view
         fetch('/join_waitlist', {
             method: 'POST',

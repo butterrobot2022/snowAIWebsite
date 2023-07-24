@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from json import loads
 from .models import SignUp
 import datetime
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -24,6 +25,7 @@ def journal(request):
     return render(request, 'horizonAI/journal.html')
 
 
+@csrf_exempt
 def join_waitlist(request):
     if request.method == 'POST':
         body = loads(request.body)

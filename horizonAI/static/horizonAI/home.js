@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': csrfToken,  // Include CSRF token from the HTML form
             },
-            body: JSON.stringify({ email }),
+            body: JSON.stringify({ email: email })
         })
         .then(response => response.json())
         .then(data => {

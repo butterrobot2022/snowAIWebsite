@@ -330,3 +330,58 @@ margin-left: 250px;
 .tags-display div i {
     cursor: pointer;
 }
+
+.validation-div {
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    padding: 25px 20px;
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    border: 2px solid #ccc;
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px;
+}
+
+.login-name, .register-name {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-username, .register-username {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 50px;
+}
+
+.login-password, .register-password, .register-email {
+    margin-bottom: 5px;
+    height: 50px;
+}
+
+.login-btn, .register-btn {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    height: 50px;
+}
+
+.login-headings {
+    /* text-align: center; */
+    margin-left: 10px;
+    margin-bottom: 2px;
+    margin-top: 30px;
+}
+
+.login-logo, .register-logo {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

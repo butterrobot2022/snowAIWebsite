@@ -1,0 +1,93 @@
+{% extends "sign_up_layout.html" %}
+
+{% block body %}
+<h2 class="register-logo">snowAI</h2>
+<div class="validation-div">
+    <h2 class="register-name">Register</h2>
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+    <form action="{% url 'horizonAI:register' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control register-username" autofocus type="text" name="username" placeholder="Username">
+        </div><br>
+        <div class="form-group">
+            <input class="form-control register-email" type="email" name="email" placeholder="Email Address">
+        </div><br>
+        <div class="form-group">
+            <input class="form-control register-password" type="password" name="password" placeholder="Password">
+        </div><br>
+        <div class="form-group">
+            <input class="form-control register-password" type="password" name="confirmation" placeholder="Confirm Password">
+            <span id="password-match-error" style="color: red; display: none;">Passwords must match!</span>
+        </div><br>
+        <input class="btn btn-primary register-btn" type="submit" value="Register" id="register-btn">
+    </form>
+
+    Already have an account? <a href="{% url 'horizonAI:login' %}">Log In here.</a>
+    
+</div>
+
+<script>
+    document.getElementById("register-btn").addEventListener("click", function(event) {
+        const password = document.querySelector("input[name='password']").value;
+        const confirmation = document.querySelector("input[name='confirmation']").value;
+        const minLength = 10; // Minimum password length
+
+        // Regular expressions for individual password requirements
+        const uppercasePattern = /[A-Z]/;
+        const lowercasePattern = /[a-z]/;
+        const numberPattern = /\d/;
+        const specialCharacterPattern = /[@$!%*?&]/;
+
+        // Check if passwords match
+        if (password !== confirmation) {
+            event.preventDefault();
+            document.getElementById("password-match-error").style.display = "block";
+            return;
+        }
+
+        // Check minimum password length
+        if (password.length < minLength) {
+            event.preventDefault();
+            alert(`Password should be at least ${minLength} characters long.`);
+            return;
+        }
+
+        // Check uppercase letter requirement
+        if (!uppercasePattern.test(password)) {
+            event.preventDefault();
+            alert("Password should contain at least one uppercase letter.");
+            return;
+        }
+
+        // Check lowercase letter requirement
+        if (!lowercasePattern.test(password)) {
+            event.preventDefault();
+            alert("Password should contain at least one lowercase letter.");
+            return;
+        }
+
+        // Check number requirement
+        if (!numberPattern.test(password)) {
+            event.preventDefault();
+            alert("Password should contain at least one number.");
+            return;
+        }
+
+        // Check special character requirement
+        if (!specialCharacterPattern.test(password)) {
+            event.preventDefault();
+            alert("Password should contain at least one special character (@, $, !, %, *, ?, or &).");
+            return;
+        }
+
+        // All requirements are met, proceed with form submission
+    });
+</script>
+
+
+{% endblock %}

@@ -31,6 +31,7 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -128,3 +129,4 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://web-production-4bbdb.up.railway.app/', 'http://localhost:8000', 'https://web-production-4bbdb.up.railway.app']
+AUTH_USER_MODEL = "horizonAI.User"

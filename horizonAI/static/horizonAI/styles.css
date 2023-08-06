@@ -435,6 +435,7 @@ margin-left: 250px;
     text-align: center;
     margin-top: 50px;
 }
+navbar
 
 .trade-analysis-overall {
     height: 250px;
@@ -574,7 +575,7 @@ margin-left: 250px;
         height: 550px;
     }
     .navbar {
-        width: 800px;
+        width: 100%;
     }
     .all-trades-div {
         width: 100%;

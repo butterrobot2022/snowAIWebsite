@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<head>
+    <title>snowAI</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'horizonAI/styles.css' %}">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/aileron" type="text/css"/>
+    <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    
+</head>
+
+<body>
+    <h3>snowAI</h3>
+    <p style="display: none;" id="equity_before">{{ equity_before }}</p>
+    <div class="new-trade-analysis">
+    <div id="reflection-div">
+    <h4 class="enter-new-trade" style="text-align: center;">Enter New Trade:</h4>
+    <div class="container mt-4">
+        <form>
+            <div class="form-group">
+                <label for="symbolDropdown" class="label-div">Select Symbol:</label>
+            <select class="form-control" id="symbolDropdown" style="cursor: pointer;">
+                <option value="">Select an option</option>
+                <option value="EURUSD">EURUSD</option>
+                <option value="GBPUSD">GBPUSD</option>
+                <option value="USDJPY">USDJPY</option>
+                <option value="XAUUSD">XAUUSD</option>
+                <option value="AUDUSD">AUDUSD</option>
+                <option value="USDCHF">USDCHF</option>
+                <option value="NZDUSD">NZDUSD</option>
+                <option value="USDCAD">USDCAD</option>
+                <option value="EURJPY">EURJPY</option>
+                <option value="GBPJPY">GBPJPY</option>
+                <option value="AUDJPY">AUDJPY</option>
+                <option value="CADJPY">CADJPY</option>
+                <option value="CHFJPY">CHFJPY</option>
+                <option value="NZDJPY">NZDJPY</option>
+                <option value="EURAUD">EURAUD</option>
+                <option value="EURGBP">EURGBP</option>
+                <option value="EURNZD">EURNZD</option>
+                <option value="EURCAD">EURCAD</option>
+                <option value="GBPAUD">GBPAUD</option>
+                <option value="GBPCAD">GBPCAD</option>
+                <option value="GBPNZD">GBPNZD</option>
+                <option value="AUDCAD">AUDCAD</option>
+                <option value="AUDCHF">AUDCHF</option>
+                <option value="AUDNZD">AUDNZD</option>
+                <option value="CADCHF">CADCHF</option>
+                <option value="CADNZD">CADNZD</option>]
+                <option value="NAS100">NASDAQ (NAS100)</option>
+                <option value="US30">US30</option>
+                <option value="GER40">GER40</option>
+                <option value="CHFJPY">CHFJPY</option>
+                <option value="CHFUSD">CHFUSD</option>
+                <option value="EURCHF">EURCHF</option>
+                <option value="EURDKK">EURDKK</option>
+                <option value="EURHKD">EURHKD</option>
+                <option value="EURHUF">EURHUF</option>
+                <option value="EURNOK">EURNOK</option>
+                <option value="EURPLN">EURPLN</option>
+                <option value="EURSEK">EURSEK</option>
+                <option value="EURTRY">EURTRY</option>
+                <option value="EURZAR">EURZAR</option>
+                <option value="GBPCHF">GBPCHF</option>
+                <option value="GBPHKD">GBPHKD</option>
+                <option value="GBPNOK">GBPNOK</option>
+                <option value="GBPSGD">GBPSGD</option>
+                <option value="AUDSGD">AUDSGD</option>
+                <option value="NZDSGD">NZDSGD</option>
+                <option value="CADSGD">CADSGD</option>
+                <option value="CHFSGD">CHFSGD</option>
+                <option value="CHFZAR">CHFZAR</option>
+                <option value="USDMXN">USDMXN</option>
+                <option value="USDZAR">USDZAR</option>
+                <option value="USDHKD">USDHKD</option>
+                <option value="USDSGD">USDSGD</option>
+                <option value="USDNOK">USDNOK</option>
+                <option value="USDSEK">USDSEK</option>
+                <option value="USDDKK">USDDKK</option>
+                <option value="USDCNH">USDCNH</option>
+                <option value="USDTHB">USDTHB</option>
+                <option value="USDPLN">USDPLN</option>
+                <option value="USDCZK">USDCZK</option>
+                <option value="USDHUF">USDHUF</option>
+                <option value="USDBRL">USDBRL</option>
+                <option value="USDRUB">USDRUB</option>
+                <option value="USDKRW">USDKRW</option>
+                <option value="USDCAD">USDCAD</option>
+                <option value="AUDNZD">AUDNZD</option>
+                <option value="NZDCAD">NZDCAD</option>
+                <option value="AUDCHF">AUDCHF</option>
+                <option value="AUDJPY">AUDJPY</option>
+                <option value="AUDCAD">AUDCAD</option>
+                <option value="AUDUSD">AUDUSD</option>
+                <option value="AUDSGD">AUDSGD</option>
+                <option value="AUDHKD">AUDHKD</option>
+                <option value="NZDUSD">NZDUSD</option>
+                <option value="NZDJPY">NZDJPY</option>
+                <option value="NZDCHF">NZDCHF</option>
+                <option value="NZDSGD">NZDSGD</option>
+                <option value="NZDHKD">NZDHKD</option>
+                <option value="CADCHF">CADCHF</option>
+                <option value="CADJPY">CADJPY</option>
+                <option value="CADSGD">CADSGD</option>
+                <option value="CADHKD">CADHKD</option>
+                <option value="CADNOK">CADNOK</option>
+                <option value="CADSEK">CADSEK</option>
+                <option value="CADDKK">CADDKK</option>
+                <option value="CHFJPY">CHFJPY</option>
+                <option value="CHFAUD">CHFAUD</option>
+                <option value="CHFNZD">CHFNZD</option>
+                <option value="CHFUSD">CHFUSD</option>
+                <option value="CHFEUR">CHFEUR</option>
+                <option value="CHFGBP">CHFGBP</option>
+                <option value="CHFSEK">CHFSEK</option>
+                <option value="CHFDKK">CHFDKK</option>
+                <option value="CHFNOK">CHFNOK</option>
+                <option value="CHFPLN">CHFPLN</option>
+                <option value="CHFHUF">CHFHUF</option>
+                <option value="CHFCZK">CHFCZK</option>
+                <option value="CHFTRY">CHFTRY</option>
+                <option value="CHFZAR">CHFZAR</option>
+                <option value="JPYSGD">JPYSGD</option>
+                <option value="JPYHKD">JPYHKD</option>
+                <option value="JPYNOK">JPYNOK</option>
+                <option value="JPYSEK">JPYSEK</option>
+                <option value="JPYDKK">JPYDKK</option>
+                <option value="JPYPLN">JPYPLN</option>
+                <option value="JPYHUF">JPYHUF</option>
+                <option value="JPYCZK">JPYCZK</option>
+                <!-- Add more currency pairs here -->
+            </select>
+         
+
+                <label for="dropdown" class="label-div">Order Type:</label>
+                <select class="form-control" id="orderTypeDropdown" style="cursor: pointer;">
+                    <option value="">Select an option</option>
+                    <option value="Buy">Buy</option>
+                    <option value="Sell">Sell</option>
+                </select>
+                <label for="floatInput" class="label-div">Position-Size:</label>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="position-size" type="text" placeholder="Default input" aria-label="default input example"> 
+                <label for="floatInput">eg. 0.01</label>
+            </div>
+            <label for="floatingInput" class="label-div">Strategy (Optional)</label>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="strategy" placeholder="eg. Mean Reversion">
+                <label for="floatingInput">eg. Mean Reversion</label>
+              </div>
+              <label for="floatingInput" class="label-div">Analysis</label>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="why-analysis" placeholder="eg. Mean Reversion">
+                <label for="floatingInput">eg. Why did you take this trade?</label>
+              </div>
+              <label for="floatingInput" class="label-div">TimeFrame</label>
+              <select class="form-control" id="timeframeDropdown" style="cursor: pointer;">
+                <option value="">Select an option</option>
+                <option value="1min">1min</option>
+                <option value="5min">5min</option>
+                <option value="15min">15min</option>
+                <option value="30min">30min</option>
+                <option value="1H">1H</option>
+                <option value="4H">4H</option>
+                <option value="1D">1D</option>
+                <option value="1W">1W</option>
+                <option value="1M">1M</option>
+            </select>
+            <label for="floatingInput" class="label-div">Entry Point</label>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="entry-point" type="number" placeholder="Default input" aria-label="default input example"> 
+            <label for="floatInput">eg. 1.23501</label>
+            </div>
+            <label for="floatingInput" class="label-div">Exit Price</label>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="exit-price" type="text" placeholder="Default input" aria-label="default input example"> 
+            <label for="floatInput">eg. 1.25501</label>
+            </div>
+            <label for="floatingInput" class="label-div">Take Profit</label>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="take-profit" type="number" placeholder="Default input" aria-label="default input example"> 
+            <label for="floatInput">eg. 1.23601</label>
+            </div>
+            <label for="floatingInput" class="label-div">Stop Loss</label>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="stop-loss" type="number" placeholder="Default input" aria-label="default input example"> 
+            <label for="floatInput">eg. 1.23401</label>
+            </div>
+            <label for="entryDateInput" class="label-div">Entry Date:</label>
+            <!-- Use type="datetime-local" for entry date input -->
+            <input class="form-control" type="datetime-local" id="entryDateInput">
+        </div>
+        <div class="form-group">
+            <label for="exitDateInput" class="label-div">Exit Date:</label>
+            <!-- Use type="datetime-local" for exit date input -->
+            <input class="form-control" type="datetime-local" id="exitDateInput">
+        </div>
+          <label for="numericInput" class="label-div">Outcome:</label>
+          <select class="form-control" id="outcome" style="cursor: pointer;">
+            <option value="">Select an option</option>
+            <option value="Profit">Profit</option>
+            <option value="Loss">Loss</option>
+        </select>
+        <label for="numericInput" class="label-div">Emotional Bias:</label>
+          <select class="form-control" id="emotional-bias" style="cursor: pointer;">
+            <option value="">Select an option</option>
+            <option value="True">True</option>
+            <option value="False">False</option>
+        </select>
+        <label for="floatingInput" class="label-div">Amount</label>
+            <div class="form-floating mb-3">
+                <input class="form-control" id="amount" type="text" placeholder="Default input" aria-label="default input example"> 
+            <label for="floatInput">eg. 200</label>
+            </div>
+          </div>        
+          <label for="floatingInput" class="label-div-learnt">Write what you learnt about today (optional):</label>
+          <div style="margin-left: 110px; margin-right: 110px;">
+          <!-- <textarea id="editor" name="editorContent"></textarea> -->
+          <div class="form-floating today-learnt-comment">
+            <textarea class="form-control" placeholder="Leave a comment here" id="learnt-today-editor" style="height: 100px"></textarea>
+            <!-- <label for="floatingTextarea2">Comments</label> -->
+          </div>
+        </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary save-button-trade">Save</button>
+    </div>
+</div>
+    <script src="static/horizonAI/new_trade.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-NjlXgdz+8l2ay1G72JV83YkdiN+6zj9b+K7xLbL6z1JpGsEnx8aTmALW7XaQ5PFb" crossorigin="anonymous"></script>
+    <script>
+        const allTradesUrl = "{% url 'horizonAI:all_trades' %}"
+    </script>
+</body>
+
+
+</html>

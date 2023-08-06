@@ -1,0 +1,23 @@
+{% extends 'horizonAI/layout.html' %}
+{% block title %}All Trades{% endblock %}
+
+{% block body %}
+
+<div class="all-trades-div">
+    <h2 class="all-trades">All Trades</h2>
+    <a href="{% url 'horizonAI:new_trade' %}" class="enter-new-trade-cta">Enter New Trade</a>
+    <div class="view-all-trades">
+        <p><b>Equity: {{ total_equity }} %</b></p>
+        <hr>
+        {% for trade in context %}
+        <p>Asset: {{ trade.symbol }}</p>
+        <p>ROI: {{ trade.roi }} %</p>
+        <!-- <p><b>R2R: 0.005% to 0.01%</b></p> -->
+        <p>Date taken: {{ trade.entry_date }}</p>
+        <a href="/trade_analysis/{{trade.id}}" class="btn btn-primary">View Full Trade</a>
+        <hr>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

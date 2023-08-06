@@ -333,17 +333,18 @@ margin-left: 250px;
 
 .validation-div {
     width: 40%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    position: relative;
+    align-items: center;
+    justify-content: center;
     margin-top: 50px;
+    margin-left: 360px;
     padding: 25px 20px;
     /* Add a box shadow to create a modal-like effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 5px rgba(0, 0, 0, 0.1);
 
     /* Add a solid border with desired color and thickness */
-    border: 2px solid #ccc;
+    border: 0px solid #ccc;
 
     /* If you want rounded corners, you can add a border-radius */
     border-radius: 8px;
@@ -360,7 +361,7 @@ margin-left: 250px;
     height: 50px;
 }
 
-.login-password, .register-password, .register-email {
+.login-password, .register-password, .register-email, .register-equity {
     margin-bottom: 5px;
     height: 50px;
 }
@@ -384,4 +385,367 @@ margin-left: 250px;
     align-items: center;
     justify-content: center;
     margin-top: 20px;
+}
+
+.enter-new-trade {
+    margin-top: 50px;
+}
+
+.save-button-trade {
+    margin-top: 20px;
+    margin-left: 110px;
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.label-div {
+    margin-top: 15px;
+}
+
+.all-trades {
+    text-align: center;
+}
+
+.all-trades-div {
+    /* text-align: center; */
+    margin-left: 400px;
+    margin-right: 100px;
+    margin-top: -175px;
+}
+
+.view-all-trades {
+    padding: 25px 20px;
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    border: 1px solid #ccc;
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px;   
+}
+
+.side-navs {
+    position: relative;
+    top: 100px;
+    left: 5px;
+}
+
+.trade-analysis {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.trade-analysis-overall {
+    height: 250px;
+    margin-left: 200px;
+    border-radius: 5px;
+    margin-top: 50px;
+}
+
+.trade-analysis-header {
+    display: flex;
+    /* justify-content: space-between; */
+    /* gap: 500px; */
+}
+
+.trade-info {
+    margin-top: 50px;
+    margin-left: 20px;
+    padding: 30px 40px;
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    /* border: 1px solid #ccc; */
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px;  
+    width: 23%;
+}
+
+.label-div-learnt {
+    margin-left: 120px;
+}
+
+.trade-analysis-reflection {
+    /* margin-left: 50px; */
+    margin-top: 30px;
+    text-align: center;
+    padding: 30px 30px;
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    /* border: 1px solid #ccc; */
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px; 
+    margin-left: 100px;
+    margin-right: 130px;
+
+}
+
+.user-analysis p {
+    text-align: left;
+    margin-left: 10px;
+    /* white-space: nowrap; Prevent text wrapping */
+    /* overflow: hidden; Hide overflowed text */
+    /* text-overflow: ellipsis; Show ellipsis (...) for overflowed text */
+}
+
+.trade-analysis-go-back {
+    width: 40%;
+    margin-left: 330px;
+    margin-right: 150px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.trade-analysis-go-back p {
+    margin-top: 10px;
+}
+
+.user-reflection, .livingston-analysis {
+    text-align: left;
+    /* text-align: left;/ */
+}
+
+
+.livingston-analysis {
+    margin-top: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.user-analysis {
+    margin-left: 100px;
+    margin-top: 50px;
+    /* padding: 30px 300px; */
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    /* border: 1px solid #ccc; */
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px; 
+    width: 55%;
+}
+
+.trade-analysis-roi, .trade-analysis-equity, .trade-analysis-bias {
+    padding: 25px 40px;
+    /* Add a box shadow to create a modal-like effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Add a solid border with desired color and thickness */
+    /* border: 1px solid #ccc; */
+
+    /* If you want rounded corners, you can add a border-radius */
+    border-radius: 8px; 
+    width: 33%;
+    margin-left: 10px;
+    /* margin-right: 50px; */
+}
+
+.trade-analysis-stomach {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 90px;
+    margin-right: 135px;
+}
+
+.analysis-header {
+    margin-left: 10px;
+    margin-top: 30px;
+}
+
+.enter-new-trade-cta {
+    /* text-align: center; */
+    margin-left: 275px;
+    text-decoration: none;
+}
+
+/* Mobile Responsiveness for cellphones */
+@media only screen and (max-width: 767px) {
+    .validation-div {
+        margin-left: 22px;
+        width: 90%;
+        height: 550px;
+    }
+    .navbar {
+        width: 800px;
+    }
+    .all-trades-div {
+        width: 100%;
+        margin-left: 325px;
+        /* margin-left: -0.1px; */
+    }
+    .enter-new-trade-cta {
+        margin-left: 145px;
+    }
+    #learnt-today-editor {
+        position: relative;
+        width: 390px;
+        height: 50px;
+        margin-left: -100px;
+    }
+    .today-learnt-comment {
+        margin-right: 50px;
+    }
+    .label-div-learnt {
+        margin-left: 10px;
+    }
+    .save-button-trade {
+        margin-left: 15px;
+        /* margin-right: 5px; */
+        width: 93%;
+    }
+    p, a {
+        font-size: 20px;
+    }
+    .trade-analysis {
+        position: relative;
+        /* text-align: center; */
+        /* margin-left: 20px; */
+        font-size: 30px;
+    }
+    .trade-analysis-header {
+        display: block;
+        width: 690px;
+        margin-left: -85px;
+        height: 1000px;
+    }
+    .trade-analysis-stomach {
+        margin-top: -515px;
+        width: 300px;
+        margin-left: 10px;
+        /* gap: 50px; */
+        height: 200px;
+        display: block;
+    }
+    .analysis-header {
+        font-size: 20px;
+    }
+    .trade-info h5, .trade-analysis-roi h5, .trade-analysis-equity h5, .trade-analysis-bias h5, .trade-analysis-reflection h5 {
+        font-size: 20px;
+        margin-left: -30px;
+        /* margin-top: 10px; */
+        /* padding: 25px 40px; */
+    }
+
+    .user-analysis { 
+        padding: 1px 10px;
+        width: 53%;
+        margin: 0px;
+    }
+
+    .user-analysis p, .user-reflection {
+        font-size: 15px;
+    }
+    .trade-info {
+        margin-top: 10px;
+        margin-left: 30px;
+        width: 360px;
+    }
+    .trade-analysis-roi p , .trade-analysis-equity p, .trade-analysis-bias p, .trade-info p {
+        margin-left: -30px;
+        font-size: 15px;
+    }
+    .trade-analysis-reflection {
+        margin-top: 175px;
+        width: 90%;
+        margin-left: 20px;
+    }
+    .trade-analysis-go-back {
+        margin-top: 10px;
+        width: 350px;
+        margin-left: 15px;
+        height: 50px;
+    }
+    .trade-analysis-go-back p {
+        font-size: 20px;
+        margin-top: -1px;
+    }
+    .trade-analysis-roi, .trade-analysis-bias, .trade-analysis-equity {
+        width: 360px;
+    }
+}
+
+/* Responiveness for tablets (min-width: 601px) and (max-width: 1023px) */
+@media only screen and (min-width: 601px) and (max-width: 1023px) {
+    .validation-div {
+        margin-left: 80px;
+        width: 80%;
+        height: 600px;
+    }
+    .navbar {
+        width: 1200px;
+    }
+    .all-trades-div {
+        width: 85%;
+        margin-right: 100px;
+    }
+    #learnt-today-editor {
+        position: relative;
+        width: 690px;
+        height: 50px;
+        margin-left: -45px;
+    }
+    .today-learnt-comment {
+        margin-right: 50px;
+    }
+    .label-div-learnt {
+        margin-left: 60px;
+    }
+    .save-button-trade {
+        margin-left: 60px;
+        /* margin-right: 5px; */
+        width: 85%;
+    }
+    .trade-analysis {
+        position: relative;
+        /* text-align: center; */
+        margin-left: -400px;
+        font-size: 40px;
+    }
+    
+    .trade-analysis-header {
+        margin-left: -45px;
+        width: 900px;
+    }
+
+    .trade-analysis-stomach {
+        margin-top: 50px;
+        width: 720px;
+        margin-left: 50px;
+    }
+    .trade-analysis-reflection {
+        margin-top: 50px;
+        width: 710px;
+        margin-left: 60px;
+    }
+    .analysis-header, .trade-info h5, .trade-analysis-roi h5, .trade-analysis-equity h5, .trade-analysis-bias h5, .trade-analysis-reflection h5 {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .user-analysis p, .trade-info p, .trade-analysis-roi p, .trade-analysis-equity p, .trade-analysis-bias p, .user-reflection {
+        font-size: 15px;
+    }
+    .trade-analysis-go-back {
+        margin-top: 50px;
+        width: 650px;
+        margin-left: 80px;
+        height: 70px;
+    }
+}
+
+.trade-analysis-wrapper {
+    gap: 10px;
+}
+
+.trade-analysis-wrapper > div {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 10px;
 }

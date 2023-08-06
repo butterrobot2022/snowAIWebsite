@@ -1,0 +1,43 @@
+.content {
+  padding: 20px 10px;
+  position: relative;
+
+  @include for-tablets {
+    padding: 25px 20px;
+  }
+
+  @include for-desktops {
+    padding: 30px;
+  }
+
+  main {
+    @include for-desktops {
+      margin-left: 250px;
+    }
+  }
+
+  .side-nav {
+    display: none;
+    list-style: none;
+    transform: translateY(50px);
+    padding: 0;
+    transition: all 1s;
+    width: 250px;
+
+    @include for-desktops {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+      gap: 20px;
+      position: fixed;
+    }
+
+    &.scroll-up {
+      transform: translateY(0);
+    }
+
+    &.scroll-down {
+      transform: translateY(50px);
+    }
+  }
+}

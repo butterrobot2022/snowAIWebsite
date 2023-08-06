@@ -1,38 +1,109 @@
-{% extends 'layout.html' %}
+{% extends 'horizonAI/layout.html' %}
 {% block title %}Journal{% endblock %}
 {% block body %}
-    <div class="journal">
-        <div class="journal-header">
-        <h2 class="journal">Journal Entry</h2>
-        <a href="#" class="new-journal-link">Create new journal entry</a>
-        </div>  
-        </div>
-           
-        <!-- <div class="journal-entries">
-          <br>
-          <h6><b>Don't sell in a downtrend</b></h6>
-          <div class="journal-topic-heading">
-          <p>Today I learnt about how to trade in an uptrend. I will never do this again. It is the last time! I swear.</p>
-          x
-        </div><br>
-          <b class="date-created-journal">Created on 2023/07/16 15:30</b>
-          <hr>
-          <h6><b>Don't buy in a uptrend</b></h6>
-          <div class="journal-topic-heading">
-          <p>Today I learnt about how to trade in an uptrend. I will never do this again. It is the last time! I swear.</p>
-          x
-        </div><br>
-          <b class="date-created-journal">Created on 2023/07/16 16:30</b>
-          <hr>
-          <h6><b>Stay out of ranging markets</b></h6>
-          <div class="journal-topic-heading">
-          <p>Today I learnt about how to trade in an uptrend. I will never do this again. It is the last time! I swear.</p>
-          x
-        </div><br>
-          <b class="date-created-journal">Created on 2023/07/16 17:30</b>
-          <hr>
-          
-        </div> -->
+
+<div>
+  <div>
+    <h2>Journal Entry</h2>
+    <a href="{% url 'horizonAI:journal_new' %}">Create new journal entry</a>
+  </div>
+
+  <div class='entries'></div>
 </div>
-<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script> -->
+
+<script>
+
+  const fetchEntries = async () => {
+    const formatDate = (dateString) => {
+      // Define the options for formatting the date
+      const dateOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+
+      // Define the options for formatting the time
+      const timeOptions = {
+        hour: 'numeric',
+        minute: 'numeric',
+      };
+
+      // Create a new Date object from the provided dateString
+      const date = new Date(dateString);
+
+      // Format the date portion of the date object
+      const formattedDate = date.toLocaleDateString('en-US', dateOptions);
+
+      // Format the time portion of the date object
+      const formattedTime = date.toLocaleTimeString('en-US', timeOptions);
+
+      // Return the formatted date and time as a string
+      return `${formattedDate} ${formattedTime}`;
+    }
+
+    try {
+      const response = await fetch('http://127.0.0.1:8000/journal/retrieve');
+      const { entries } = await response.json();
+
+      const entriesWrapper = document.querySelector('.entries');
+
+      for (const entry of entries) {
+        const div = document.createElement('div');
+        div.classList = 'entry-container border-bottom border-dark';
+        div.innerHTML = `
+          <div class="card card-body entry-body">
+            ${entry.body}
+          </div>
+
+          <div class='show-entry toggle' onClick='showEntryBody(event)'>See More</div>
+          <div class='hide-entry d-none toggle' onClick='hideEntryBody(event)'>See Less</div>
+
+          <div class='header'>
+            Last saved on <span class='datetime'>${formatDate(entry.last_saved)}</span>
+          </div>
+
+          <div class='tags-display'></div>
+        `;
+
+        entriesWrapper.appendChild(div);
+
+        const tagDisplay = div.querySelector('.tags-display');
+
+        entry.tags.split(',').map((tag) => {
+          const tagContainer = document.createElement('div');
+          tagContainer.innerText = tag;
+          tagDisplay.appendChild(tagContainer);
+        });
+      }
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const showEntryBody = (e) => {
+    const entryContainer = e.target.closest('.entry-container');
+    const card = entryContainer.querySelector('.entry-body');
+
+    entryContainer.querySelector('.show-entry').classList.add('d-none');
+    entryContainer.querySelector('.hide-entry').classList.remove('d-none');
+
+    console.log(card.scrollHeight);
+    
+    card.style.height = card.scrollHeight + 'px';
+  }
+  
+  const hideEntryBody = (e) => {
+    const entryContainer = e.target.closest('.entry-container');
+    const card = entryContainer.querySelector('.entry-body');
+    
+    entryContainer.querySelector('.show-entry').classList.remove('d-none');
+    entryContainer.querySelector('.hide-entry').classList.add ('d-none');
+
+    card.style.height = '60px';
+  }
+
+  fetchEntries();
+</script>
+
 {% endblock %}

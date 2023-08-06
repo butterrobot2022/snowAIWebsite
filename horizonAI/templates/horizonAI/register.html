@@ -3,7 +3,7 @@
 {% block body %}
 <h2 class="register-logo">snowAI</h2>
 <div class="validation-div">
-    <h2 class="register-name">Register</h2>
+    <h4 class="register-name">Register</h4>
 
     {% if message %}
         <div>{{ message }}</div>
@@ -18,6 +18,9 @@
             <input class="form-control register-email" type="email" name="email" placeholder="Email Address">
         </div><br>
         <div class="form-group">
+            <input class="form-control register-equity" type="number" name="equity" placeholder="Enter Initial Equity">
+        </div><br>
+        <div class="form-group">
             <input class="form-control register-password" type="password" name="password" placeholder="Password">
         </div><br>
         <div class="form-group">
@@ -27,7 +30,7 @@
         <input class="btn btn-primary register-btn" type="submit" value="Register" id="register-btn">
     </form>
 
-    Already have an account? <a href="{% url 'horizonAI:login' %}">Log In here.</a>
+    Already have an account? <a href="{% url 'horizonAI:login' %}" style="text-decoration: none;">Login here.</a>
     
 </div>
 

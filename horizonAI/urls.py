@@ -13,4 +13,15 @@ urlpatterns = [
     path('books', views.books, name='books'),
     path('journal', views.journal, name='journal'),
     path('join_waitlist', views.join_waitlist, name='join_waitlist'),
+    path('new_trade', views.new_trade, name='new_trade'),
+    path('all_trades', views.all_trades, name='all_trades'),
+    path('trade_analysis/<int:identifier>', views.trade_analysis, name='trade_analysis'),
+    path('forgot_password', views.forgot_password, name='forgot_password'),
+    path('send_code/<str:to_email>', views.send_code, name='send_code'), 
+    path('save_new_password/<str:email>/<str:new_password>', views.save_new_password, name='save_new_password'),
+    path('journal/retrieve', views.retrieve_journal, name='get_journal'),
+    path('trades/all', views.get_all_trades, name='get_all_trades'),
+    path('journal/new', views.create_journal, name='journal_new'),
+    path('trades/all/analysis', views.trades_analysis, name='trade_analysis'),
+    path('get_equity_before/<int:identifier>', views.get_equity_before, name='get_equity_before')
 ]

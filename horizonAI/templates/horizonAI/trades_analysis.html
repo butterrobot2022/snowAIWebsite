@@ -1,0 +1,83 @@
+{% extends 'horizonAI/layout.html' %}
+
+{% load static %}
+
+{% block title %} Trade Analysis {% endblock %}
+
+{% block body %}
+
+<div class='container'>
+  <div class='row'>
+
+    <div class='card col col-md-4'>
+      <h3>Equity</h3>
+      <div class='equity'></div>
+    </div>
+
+    <div class='card col col-md-4'>
+      <h3>Profit</h3>
+      <div class='profit'></div>
+    </div>
+
+    <div class='card col col-md-4'>
+      <h3>ROI</h3>
+      <div class='roi'></div>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Win Rate</h3>
+      <div class='win-rate'></div>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Maximum Drawdown</h3>
+      <div class='maximum-drawdown'></div>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Peak Value</h3>
+      <div class='peak-value'></div>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Trough Value</h3>
+      <div class='trough-value'></div>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Profits for each trade</h3>
+      <canvas id='profit-chart'></canvas>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>ROI for each trade</h3>
+      <canvas id='roi-chart'></canvas>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Equity before each trade</h3>
+      <canvas id='equity-chart'></canvas>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Equity Risked on each trade</h3>
+      <canvas id='equity-risked-chart'></canvas>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Period of Most Wins</h3>
+      <canvas id='period-of-most-wins'></canvas>
+    </div>
+
+    <div class='card col-12 col-md-6'>
+      <h3>Period of Most Losses</h3>
+      <canvas id='period-of-most-losses'></canvas>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type='text/javascript' src='{% static "horizonAI/js/tradesAnalysis.js" %}'></script>
+
+{% endblock %}

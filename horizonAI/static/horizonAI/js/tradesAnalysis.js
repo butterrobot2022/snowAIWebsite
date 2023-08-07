@@ -215,10 +215,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     alert('i work #4')
 
-    const indexOfEquity = profit.findLastIndex((val) => val === Math.min(...profit));
+    // const indexOfEquity = profit.findLastIndex((val) => val === Math.min(...profit));
 
     alert('i work #5')
-    const maximumDrawdown = (((peakValue - equityBefore[indexOfEquity + 1]) / peakValue) * 100).toFixed(1);
+    const maximumDrawdown = (((peakValue - troughValue) / peakValue) * 100).toFixed(1);
+    // const maximumDrawdown = (((peakValue - equityBefore[indexOfEquity + 1]) / peakValue) * 100).toFixed(1);
     alert('i work #6')
     
     const overallProfit = equityBefore[equityBefore.length - 1] - equityBefore[0];

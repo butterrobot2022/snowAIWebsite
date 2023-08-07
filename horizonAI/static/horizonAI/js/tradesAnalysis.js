@@ -259,6 +259,8 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       
       const profitLabels = trades.map((_, index) => `Trade ${index + 1}`);
+
+      alert('i work');
       
       const profitData = {
         labels: profitLabels,

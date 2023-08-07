@@ -42,7 +42,7 @@
     }
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/journal/retrieve');
+      const response = await fetch('/journal/retrieve');
       const { entries } = await response.json();
 
       const entriesWrapper = document.querySelector('.entries');

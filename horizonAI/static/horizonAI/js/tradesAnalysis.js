@@ -244,12 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/trades/all');
       const { trades } = await response.json();
+      alert('i work');
       const { stats } = tradeStatistics(trades);
   
       console.log('trades', trades);
       console.log('stats', stats);
 
-      alert('i work');
     
       const options = {
         scales: {

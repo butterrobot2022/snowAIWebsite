@@ -248,7 +248,8 @@ document.addEventListener('DOMContentLoaded', () => {
   
       console.log('trades', trades);
       console.log('stats', stats);
-    
+
+      alert('i work');
     
       const options = {
         scales: {
@@ -260,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const profitLabels = trades.map((_, index) => `Trade ${index + 1}`);
 
-      alert('i work');
+      // alert('i work');
       
       const profitData = {
         labels: profitLabels,

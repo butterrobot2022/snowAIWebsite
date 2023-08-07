@@ -222,6 +222,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const overallProfit = equityBefore[equityBefore.length - 1] - equityBefore[0];
     const overallROI = calculateROI(overallProfit, equityBefore[0]);
 
+    alert('i work #3')
+
     const stats = {
       equity: equityBefore,
       equityRisked,

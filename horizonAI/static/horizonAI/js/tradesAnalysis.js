@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const renderStats = async () => {
     try {
-      const response = await fetch('https://web-production-4bbdb.up.railway.app/trades/all');
+      const response = await fetch('/trades/all');
       const { trades } = await response.json();
       const { stats } = tradeStatistics(trades);
   

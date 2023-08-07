@@ -14,7 +14,6 @@ from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password
 import requests
 import random
-from twilio.rest import Client
 
 
 # Create your views here.
@@ -155,68 +154,6 @@ def save_new_password(request, email, new_password):
     user_new_password.password = hashed_password
     user_new_password.save()
     return JsonResponse({'message': 'New password saved successfully!'})
-
-
-@csrf_exempt
-def send_code(request, to_email):
-    subject = 'Test Email'
-    message = 'This is a test email sent using Django.'
-    from_email = 'butterrobot83@gmail.com'  # Replace with your email address or leave it as is
-    recipient = 'motingwetlotlo@yahoo.com'  # Single email address
-
-    # You can pass the recipient directly as a string
-    to_email = to_email
-    subject = "Please verify your email address."
-    verification_code = ''.join(str(random.randint(0, 9)) for _ in range(6))
-    text = "This is a test email sent with Mailgun!"
-
-    send_email_with_django(to_email, subject, verification_code)
-
-    # Alternatively, you can pass the recipient as a list with one email address
-    # send_mail(subject, message, from_email, [recipient])
-
-    return JsonResponse({'message': 'Email successfully sent!', 'verification_code': verification_code})
-
-
-def send_simple_message(to_email, subject, text):
-    api_key = '7c1ffcd10c7a1d5e137766e8ff9b819b-28e9457d-7fcb8c88'
-    domain =  'sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org'
-    post_master = 'postmaster@sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org'
-    try:
-        response = requests.post(
-            f"https://api.mailgun.net/v3/{domain}/messages",
-            auth=("api", api_key),
-            data={
-                "from": f"Mailgun Sandbox <{post_master}>",
-                "to": to_email,
-                "subject": subject,
-                "text": text,
-            }
-        )
-        
-        if response.status_code == 200:
-            print("Email sent successfully!")
-        else:
-            print(f"Email sending failed. Status code: {response.status_code}")
-            print(response.text)
-    except Exception as e:
-        print(f"Error sending email: {str(e)}")
-    
-
-def send_email_with_django(to_email, subject, text):
-    try:
-        send_mail(
-            subject,
-            text,
-            'postmaster@sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org',  # Replace with your sender email
-            [to_email],
-            fail_silently=False,
-        )
-        print("Email sent successfully!")
-    except Exception as e:
-        print(f"Error sending email: {str(e)}")
-
-    
 
 
 

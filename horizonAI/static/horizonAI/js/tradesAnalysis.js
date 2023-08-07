@@ -422,6 +422,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error){
       console.error(error);
+      alert('There was an error');
       throw new Error("We couldn't fetch all the trades.");
     }
   }

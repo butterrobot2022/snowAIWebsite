@@ -7,17 +7,32 @@ from django.db import IntegrityError
 # from django.contrib.auth import login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.utils import timezone
 from datetime import datetime
 from django.core.mail import send_mail
 from django.contrib.auth.hashers import make_password
 import requests
 import random
+from twilio.rest import Client
 
 
 # Create your views here.
 equity = 10000
+
+# account_sid = 'ACc5b451c653c4b18a8c5efcc6730a98c2'
+# auth_token = 'd10643cb1677146e0417819d9ded82ad'
+# client = Client(account_sid, auth_token)
+# number = '+16623042614'
+# message = client.messages \
+#                 .create(
+#                      body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+#                      from_=number,
+#                      to='+27836041037'
+#                  )
+
+# print(message.sid)
+
 
 def home(request):
     signups = SignUp.objects.all()
@@ -90,11 +105,12 @@ def register(request):
         password = request.POST["password"]
         confirmation = request.POST["confirmation"]
         equity = request.POST['equity']
+        phone_number = request.POST['phone-number']
         print(f'Equity is {equity}')
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = User.objects.create_user(username, email, password, phone_number=phone_number)
             user.save()
         except IntegrityError:
             return render(request, "horizonAI/register.html", {
@@ -154,7 +170,7 @@ def send_code(request, to_email):
     verification_code = ''.join(str(random.randint(0, 9)) for _ in range(6))
     text = "This is a test email sent with Mailgun!"
 
-    send_simple_message(to_email, subject, verification_code)
+    send_email_with_django(to_email, subject, verification_code)
 
     # Alternatively, you can pass the recipient as a list with one email address
     # send_mail(subject, message, from_email, [recipient])
@@ -163,16 +179,44 @@ def send_code(request, to_email):
 
 
 def send_simple_message(to_email, subject, text):
-    return requests.post(
-        "https://api.mailgun.net/v3/sandbox6747417a740b468e99342ded03f729d2.mailgun.org/messages",
-        auth=("api", "4ebcff62f17c77414e37fdf38f363735-73f745ed-aa6a5882"),  # Replace with your Mailgun API key
-        data={
-            "from": "Mailgun Sandbox <postmaster@sandbox6747417a740b468e99342ded03f729d2.mailgun.org>",
-            "to": to_email,
-            "subject": subject,
-            "text": text,
-        }
-    )
+    api_key = '7c1ffcd10c7a1d5e137766e8ff9b819b-28e9457d-7fcb8c88'
+    domain =  'sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org'
+    post_master = 'postmaster@sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org'
+    try:
+        response = requests.post(
+            f"https://api.mailgun.net/v3/{domain}/messages",
+            auth=("api", api_key),
+            data={
+                "from": f"Mailgun Sandbox <{post_master}>",
+                "to": to_email,
+                "subject": subject,
+                "text": text,
+            }
+        )
+        
+        if response.status_code == 200:
+            print("Email sent successfully!")
+        else:
+            print(f"Email sending failed. Status code: {response.status_code}")
+            print(response.text)
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
+    
+
+def send_email_with_django(to_email, subject, text):
+    try:
+        send_mail(
+            subject,
+            text,
+            'postmaster@sandbox61c96a6c506b461aa0152413b3cd7551.mailgun.org',  # Replace with your sender email
+            [to_email],
+            fail_silently=False,
+        )
+        print("Email sent successfully!")
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
+
+    
 
 
 
@@ -256,6 +300,7 @@ def new_trade(request):
 
 
 def all_trades(request):
+    # print(User.objects.get(username=request.user).phone_number)
     global equity
     save_equity = Initial.objects.get(username=request.user)
     print(f'Current Equity is {save_equity.equity_before}')

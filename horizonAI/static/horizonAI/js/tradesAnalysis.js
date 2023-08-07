@@ -199,11 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    alert('i work  #2')
 
     const winRate = ((tradesWon / trades.length) * 100).toFixed(1);
 
-    alert('i work #3')
 
     const peakValue = Math.max(...equityBefore);
     const troughValue = Math.min(...equityBefore);
@@ -213,20 +211,15 @@ document.addEventListener('DOMContentLoaded', () => {
     //   return [sorted[0], sorted[sorted.length - 1]];
     // })();
 
-    alert('i work #4')
 
     // const indexOfEquity = profit.findLastIndex((val) => val === Math.min(...profit));
 
-    alert('i work #5')
     const maximumDrawdown = (((peakValue - troughValue) / peakValue) * 100).toFixed(1);
     // const maximumDrawdown = (((peakValue - equityBefore[indexOfEquity + 1]) / peakValue) * 100).toFixed(1);
-    alert('i work #6')
     
     const overallProfit = equityBefore[equityBefore.length - 1] - equityBefore[0];
-    alert('i work #7')
     const overallROI = calculateROI(overallProfit, equityBefore[0]);
 
-    alert('i work #8')
 
     const stats = {
       equity: equityBefore,
@@ -252,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const response = await fetch('/trades/all');
       const { trades } = await response.json();
-      alert('i work');
       const { stats } = tradeStatistics(trades);
   
       console.log('trades', trades);

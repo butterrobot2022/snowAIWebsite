@@ -202,15 +202,18 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('i work  #2')
 
     const winRate = ((tradesWon / trades.length) * 100).toFixed(1);
-    
+
     alert('i work #3')
 
-    const [peakValue, troughValue] = (() => {
-      const sorted = equityBefore.toSorted((a, b) => b - a);
-      return [sorted[0], sorted[sorted.length - 1]];
-    })();
+    const peakValue = Math.max(...equityBefore);
+    const troughValue = Math.min(...equityBefore);
 
-    // alert('i work #3')
+    // const [peakValue, troughValue] = (() => {
+    //   const sorted = equityBefore.toSorted((a, b) => b - a);
+    //   return [sorted[0], sorted[sorted.length - 1]];
+    // })();
+
+    alert('i work #4')
 
     const indexOfEquity = profit.findLastIndex((val) => val === Math.min(...profit));
 

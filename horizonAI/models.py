@@ -127,3 +127,4 @@ class Initial(models.Model):
   username = models.CharField(max_length=120)
   initial_equity = models.FloatField()
   equity_before = models.FloatField()
+

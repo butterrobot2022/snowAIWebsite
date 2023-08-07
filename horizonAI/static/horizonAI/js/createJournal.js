@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.save-status').innerText = 'Saving...';
     
     try {
-      const response = await fetch('http://127.0.0.1:8000/journal/new', options);
+      const response = await fetch('/journal/new', options);
       
       if (response.status === 200) {
         document.querySelector('.save-status').innerHTML = `<div style="color: green">Last saved on ${new Date}</div>`;

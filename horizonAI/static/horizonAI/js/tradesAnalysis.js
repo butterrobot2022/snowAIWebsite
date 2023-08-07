@@ -199,6 +199,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    alert('i work  #2')
+
     const winRate = ((tradesWon / trades.length) * 100).toFixed(1);
 
     const [peakValue, troughValue] = (() => {

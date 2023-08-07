@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.save-status').innerText = 'Saving...';
     
     try {
-      const response = await fetch('/journal/new', options);
+      const response = await fetch('https://web-production-4bbdb.up.railway.app/journal/new', options);
       
       if (response.status === 200) {
         document.querySelector('.save-status').innerHTML = `<div style="color: green">Last saved on ${new Date}</div>`;

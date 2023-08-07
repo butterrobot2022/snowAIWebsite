@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    phone_number = models.IntegerField()
+    phone_number = models.IntegerField(null=True, blank=True)
 
 
 class SignUp(models.Model):
